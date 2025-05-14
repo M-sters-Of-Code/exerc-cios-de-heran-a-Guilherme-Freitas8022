@@ -28,9 +28,11 @@ namespace SistemaBancario.Model
         }
         public virtual void Depositar(decimal valor)
         {
-            if (valor <= 0)
-                throw new ArgumentException("O valor do depósito deve ser maior que zero.");
-            Saldo += valor; // Saldo = Saldo + valor;
+            if (valor <= 1)
+                throw new ArgumentOutOfRangeException("O valor do depósito deve ser maior que um.");
+            decimal bonus = 1;
+            decimal valorMaisBonus = valor + bonus;
+            Saldo += valorMaisBonus; // Saldo = Saldo + valor;
         }
 
         public virtual void Sacar(decimal valor)
